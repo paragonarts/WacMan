@@ -11,14 +11,26 @@ public class PC : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.GetComponent<Transform>().Translate(MovementDirection * Speed, Space.World);
+        gameObject.GetComponent<Rigidbody2D>().AddForce(MovementDirection * Speed, ForceMode2D.Impulse);
 	}
     public void MoveVertical(int VerticalAxis)
     {
-        MovementDirection.y = VerticalAxis;
+        if (VerticalAxis == 0)
+        {
+            MovementDirection.y = VerticalAxis;
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+        else { MovementDirection.y = VerticalAxis; }
+        
     }
     public void MoveHorizontal(int HorizontalAxis)
     {
-        MovementDirection.x = HorizontalAxis;
+        if (HorizontalAxis == 0)
+        {
+            MovementDirection.x = HorizontalAxis;
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+        else { MovementDirection.x = HorizontalAxis; }
+        
     }
 }
