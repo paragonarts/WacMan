@@ -4,6 +4,7 @@ using System.Collections;
 public class PC : MonoBehaviour {
     Vector2 MovementDirection;
     public float Speed;
+    public float JumpHeight;
 	// Use this for initialization
 	void Start () {
 	
@@ -23,14 +24,8 @@ public class PC : MonoBehaviour {
         else { MovementDirection.y = VerticalAxis; }
         
     }
-    public void MoveHorizontal(int HorizontalAxis)
+    public void Jump()
     {
-        if (HorizontalAxis == 0)
-        {
-            MovementDirection.x = HorizontalAxis;
-            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        }
-        else { MovementDirection.x = HorizontalAxis; }
-        
+        gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpHeight, ForceMode2D.Impulse);
     }
 }
