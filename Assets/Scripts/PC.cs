@@ -14,14 +14,14 @@ public class PC : MonoBehaviour {
 	void Update () {
         gameObject.GetComponent<Rigidbody2D>().AddForce(MovementDirection * Speed, ForceMode2D.Impulse);
 	}
-    public void MoveVertical(int VerticalAxis)
+    public void MoveHorizontal(int HorizontalAxis)///Get Axis??
     {
-        if (VerticalAxis == 0)
+        if (HorizontalAxis == 0)
         {
-            MovementDirection.y = VerticalAxis;
+            MovementDirection.x = HorizontalAxis;
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
-        else { MovementDirection.y = VerticalAxis; }
+        else { MovementDirection.x = HorizontalAxis; }
         
     }
     public void Jump()
